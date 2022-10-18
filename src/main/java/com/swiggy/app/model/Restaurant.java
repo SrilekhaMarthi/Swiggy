@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -36,12 +37,18 @@ public class Restaurant extends Auditable<String>{
 	@JoinColumn(name="restaurant_id",referencedColumnName="id")
 	private List<Category> categories=new ArrayList<>();
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="offer_id",referencedColumnName="id")
+	private Offer offer;
+	
+	
+	
 	public Restaurant() {
 		
 	}
 
 	public Restaurant(Long id, @NotNull String name, @NotNull String address, double avgRating,int totalRatings,
-			@NotBlank(message = "Type of restaurant shouldn't be blank") String type, List<Category> categories) {
+			@NotBlank(message = "Type of restaurant shouldn't be blank") String type, List<Category> categories,Offer offer) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -50,9 +57,9 @@ public class Restaurant extends Auditable<String>{
 		this.totalRatings=totalRatings;
 		this.type = type;
 		this.categories = categories;
+		this.offer=offer;
 	}
 
-	
 
 	public Long getId() {
 		return id;
@@ -109,8 +116,26 @@ public class Restaurant extends Auditable<String>{
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
-	
-	
+
+	public int getTotalRatings() {
+		return totalRatings;
+	}
+
+	public void setTotalRatings(int totalRatings) {
+		this.totalRatings = totalRatings;
+	}
+
+	public Offer getOffer() {
+		return offer;
+	}
+
+	public void setOffer(Offer offer) {
+		this.offer = offer;
+	}
+
+	public void setAvgRating(double avgRating) {
+		this.avgRating = avgRating;
+	}
 
 	@Override
 	public String toString() {

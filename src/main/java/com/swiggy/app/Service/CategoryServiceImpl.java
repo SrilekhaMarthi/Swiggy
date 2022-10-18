@@ -11,42 +11,42 @@ import com.swiggy.app.model.Category;
 @Service
 public class CategoryServiceImpl implements CategoryService{
 	
-	private CategoryRepository CategoryRepo;
+	private CategoryRepository categoryRepo;
 	
-	public CategoryServiceImpl(CategoryRepository CategoryRepo) {
-		this.CategoryRepo=CategoryRepo;
+	public CategoryServiceImpl(CategoryRepository categoryRepo) {
+		this.categoryRepo=categoryRepo;
 	}
 	
 	@Override
 	public List<Category> getAllCategories(){
-		return CategoryRepo.findAll();
+		return categoryRepo.findAll();
 	}
 	
 	@Override
 	public Category getCategoryById(Long id) {
-		return CategoryRepo.findById(id).orElseThrow(()->new NoSuchElementException());
+		return categoryRepo.findById(id).orElseThrow(()->new NoSuchElementException());
 		
 	}
 	
 	@Override
-	public Category addCategory(Category Category) {
-		return CategoryRepo.save(Category);
+	public Category addCategory(Category category) {
+		return categoryRepo.save(category);
 	}
 	
 	@Override
 	public Category updateCategory(Category category,Long id) {
-		Boolean exists = CategoryRepo.existsById(id);
+		Boolean exists = categoryRepo.existsById(id);
 		if (exists) {
-			return CategoryRepo.save(category);
+			return categoryRepo.save(category);
 		} 
 		return null;
 	}
 	
 	@Override
 	public Category deleteCategory(Long id) {
-		CategoryRepo.findById(id).orElseThrow(()->new NoSuchElementException());
-		Category rest = CategoryRepo.findById(id).get();
-		 CategoryRepo.deleteById(id);
+		categoryRepo.findById(id).orElseThrow(()->new NoSuchElementException());
+		Category rest = categoryRepo.findById(id).get();
+		categoryRepo.deleteById(id);
 		 return rest;
 	}
 }

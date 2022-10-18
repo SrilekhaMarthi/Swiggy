@@ -11,42 +11,42 @@ import com.swiggy.app.model.Offer;
 @Service
 public class OfferServiceImpl implements OfferService{
 
-private OfferRepository OfferRepo;
+private OfferRepository offerRepo;
 	
-	public OfferServiceImpl(OfferRepository OfferRepo) {
-		this.OfferRepo=OfferRepo;
+	public OfferServiceImpl(OfferRepository offerRepo) {
+		this.offerRepo=offerRepo;
 	}
 	
 	@Override
 	public List<Offer> getAllOffers(){
-		return OfferRepo.findAll();
+		return offerRepo.findAll();
 	}
 	
 	@Override
 	public Offer getOfferById(Long id) {
-		return OfferRepo.findById(id).orElseThrow(()->new NoSuchElementException());
+		return offerRepo.findById(id).orElseThrow(()->new NoSuchElementException());
 		
 	}
 	
 	@Override
-	public Offer addOffer(Offer Offer) {
-		return OfferRepo.save(Offer);
+	public Offer addOffer(Offer offer) {
+		return offerRepo.save(offer);
 	}
 	
 	@Override
 	public Offer updateOffer(Offer offer,Long id) {
-		Boolean exists = OfferRepo.existsById(id);
+		Boolean exists = offerRepo.existsById(id);
 		if (exists) {
-			return OfferRepo.save(offer);
+			return offerRepo.save(offer);
 		} 
 		return null;
 	}
 	
 	@Override
 	public Offer deleteOffer(Long id) {
-		OfferRepo.findById(id).orElseThrow(()->new NoSuchElementException());
-		Offer rest = OfferRepo.findById(id).get();
-		 OfferRepo.deleteById(id);
+		offerRepo.findById(id).orElseThrow(()->new NoSuchElementException());
+		Offer rest = offerRepo.findById(id).get();
+		offerRepo.deleteById(id);
 		 return rest;
 	}
 }

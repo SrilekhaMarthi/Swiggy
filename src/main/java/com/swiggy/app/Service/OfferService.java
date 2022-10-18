@@ -10,9 +10,9 @@ public interface OfferService {
 
 	Offer getOfferById(Long id);
 
-	Offer addOffer(Offer Offer);
+	Offer addOffer(Offer offer);
 
-	Offer updateOffer(Offer Offer, Long id);
+	Offer updateOffer(Offer offer, Long id);
 
 	Offer deleteOffer(Long id);
 }

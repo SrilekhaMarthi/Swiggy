@@ -17,13 +17,14 @@ public class Item extends Auditable<String>{
 	private String description;
 	private int availability_status;
 	private int quantity;
+	private String image;
 	//0=>not available 1=>available
 
 	public Item() {
 		
 	}
 
-	public Item(Long id, String name, double price, String description, int quantity,int availability_status) {
+	public Item(Long id, String name, double price, String description, int quantity,int availability_status,String image) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -31,6 +32,7 @@ public class Item extends Auditable<String>{
 		this.description = description;
 		this.quantity = quantity;
 		this.availability_status = availability_status;
+		this.image=image;
 		}
 
 	public Long getId() {
@@ -79,6 +81,15 @@ public class Item extends Auditable<String>{
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description

@@ -13,8 +13,8 @@ public class CartServiceImpl implements CartService {
 	private CartRepository cartRepo;
 	double sum;
 
-	public CartServiceImpl(CartRepository CartRepo) {
-		this.cartRepo = CartRepo;
+	public CartServiceImpl(CartRepository cartRepo) {
+		this.cartRepo = cartRepo;
 	}
 
 	@Override
@@ -32,15 +32,15 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public Cart addCart(Cart Cart) {
-		return cartRepo.save(Cart);
+	public Cart addCart(Cart cart) {
+		return cartRepo.save(cart);
 	}
 
 	@Override
-	public Cart updateCart(Cart Cart, Long id) {
-		Boolean cart = cartRepo.existsById(id);
-		if (cart) {
-			return cartRepo.save(Cart);
+	public Cart updateCart(Cart cart, Long id) {
+		Boolean exists = cartRepo.existsById(id);
+		if (exists) {
+			return cartRepo.save(cart);
 		} 
 		return null;
 	}

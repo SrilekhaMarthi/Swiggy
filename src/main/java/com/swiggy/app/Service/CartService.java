@@ -10,9 +10,9 @@ public interface CartService {
 
 	Cart getCartById(Long id);
 
-	Cart addCart(Cart Cart);
+	Cart addCart(Cart cart);
 
-	Cart updateCart(Cart Cart, Long id);
+	Cart updateCart(Cart cart, Long id);
 
 	Cart deleteCart(Long id);
 

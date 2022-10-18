@@ -10,9 +10,9 @@ public interface ItemService {
 
 	Item getItemById(Long id);
 
-	Item addItem(Item Item);
+	Item addItem(Item item);
 
-	Item updateItem(Item Item, Long id);
+	Item updateItem(Item item, Long id);
 
 	Item deleteItem(Long id);
 }

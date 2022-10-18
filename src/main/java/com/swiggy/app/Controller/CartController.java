@@ -19,44 +19,44 @@ import com.swiggy.app.model.Cart;
 @RestController
 @RequestMapping("/api/cart")
 public class CartController {
-	private CartService CartService;
+	private CartService cartService;
 	private GResponse gResponse;
 	
-	public CartController(CartService CartService,GResponse gResponse) {
-		this.CartService=CartService;
+	public CartController(CartService cartService,GResponse gResponse) {
+		this.cartService=cartService;
 		this.gResponse=gResponse;
 	}
 	
 	@GetMapping("/all")
 	public GResponse getAllCarts() {
-		gResponse.setData(CartService.getAllCarts());
+		gResponse.setData(cartService.getAllCarts());
 		gResponse.setStatus(gResponse.getStatus());
 		return gResponse;
 	}
 	
 	@GetMapping("/{id}")
 	public GResponse getCartById(@PathVariable Long id) {
-		gResponse.setData(CartService.getCartById(id));
+		gResponse.setData(cartService.getCartById(id));
 		gResponse.setStatus(HttpStatus.OK.value());
 		//System.out.println("Controller:"+gResponse);
 		return gResponse;
 	}
 	
 	@PostMapping
-	public GResponse addCart(@Valid @RequestBody Cart Cart) {
-		gResponse.setData(CartService.addCart(Cart));
+	public GResponse addCart(@Valid @RequestBody Cart cart) {
+		gResponse.setData(cartService.addCart(cart));
 		return gResponse;
 	}
 	
 	@PutMapping("/{id}")
-	public GResponse updateCart(@Valid @RequestBody Cart Cart,@PathVariable Long id) {
-		gResponse.setData(CartService.updateCart(Cart, id));
+	public GResponse updateCart(@Valid @RequestBody Cart cart,@PathVariable Long id) {
+		gResponse.setData(cartService.updateCart(cart, id));
 		return gResponse;
 	}
 	
 	@DeleteMapping("/{id}")
 	public GResponse deleteCart(@PathVariable Long id) {
-		gResponse.setData(CartService.deleteCart(id));
+		gResponse.setData(cartService.deleteCart(id));
 		return gResponse;
 	}
 	

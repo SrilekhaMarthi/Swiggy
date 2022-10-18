@@ -11,42 +11,42 @@ import com.swiggy.app.model.Item;
 @Service
 public class ItemServiceImpl implements ItemService{
 
-private ItemRepository ItemRepo;
+private ItemRepository itemRepo;
 	
-	public ItemServiceImpl(ItemRepository ItemRepo) {
-		this.ItemRepo=ItemRepo;
+	public ItemServiceImpl(ItemRepository itemRepo) {
+		this.itemRepo=itemRepo;
 	}
 	
 	@Override
 	public List<Item> getAllItems(){
-		return ItemRepo.findAll();
+		return itemRepo.findAll();
 	}
 	
 	@Override
 	public Item getItemById(Long id) {
-		return ItemRepo.findById(id).orElseThrow(()->new NoSuchElementException());
+		return itemRepo.findById(id).orElseThrow(()->new NoSuchElementException());
 		
 	}
 	
 	@Override
-	public Item addItem(Item Item) {
-		return ItemRepo.save(Item);
+	public Item addItem(Item item) {
+		return itemRepo.save(item);
 	}
 	
 	@Override
 	public Item updateItem(Item item,Long id) {
-		Boolean exists = ItemRepo.existsById(id);
+		Boolean exists = itemRepo.existsById(id);
 		if (exists) {
-			return ItemRepo.save(item);
+			return itemRepo.save(item);
 		} 
 		return null;
 	}
 	
 	@Override
 	public Item deleteItem(Long id) {
-		ItemRepo.findById(id).orElseThrow(()->new NoSuchElementException());
-		Item rest = ItemRepo.findById(id).get();
-		 ItemRepo.deleteById(id);
+		itemRepo.findById(id).orElseThrow(()->new NoSuchElementException());
+		Item rest = itemRepo.findById(id).get();
+		 itemRepo.deleteById(id);
 		 return rest;
 	}
 }
