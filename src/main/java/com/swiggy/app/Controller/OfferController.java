@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.swiggy.app.GResponse.GResponse;
@@ -57,6 +58,12 @@ public class OfferController {
 	@DeleteMapping("/{id}")
 	public GResponse deleteOffer(@PathVariable Long id) {
 		gResponse.setData(OfferService.deleteOffer(id));
+		return gResponse;
+	}
+	
+	@GetMapping("/coupon")
+	public GResponse getOfferByCouponCode(@RequestParam("Code") String couponCode) {
+		gResponse.setData(OfferService.findOfferByCouponCode(couponCode));
 		return gResponse;
 	}
 	

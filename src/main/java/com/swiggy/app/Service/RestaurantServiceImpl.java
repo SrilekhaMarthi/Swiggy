@@ -34,23 +34,37 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 	@Override
 	public Restaurant updateRestaurant(Restaurant restaurant, Long id) {
-		Boolean exists = restaurantRepo.existsById(id);
-		if (exists) {
-			return restaurantRepo.save(restaurant);
-		} 
-		return null;
+		Restaurant restaurant1 = restaurantRepo.findById(id).get();
+		if (restaurant1 != null) {
+			if (restaurant.getName() != null) {
+				restaurant1.setName(restaurant.getName());
+			}
+			if (restaurant.getAddress()!=null) {
+				restaurant1.setAddress(restaurant.getAddress());
+			}
+			if (restaurant.getType()!=null) {
+				restaurant1.setType(restaurant.getType());
+			}
+			return restaurant1;
+		} else {
+			restaurantRepo.save(restaurant);
+			return restaurant;
+		}
 	}
 
 	@Override
-	public Restaurant deleteRestaurant(Long id) {
-		restaurantRepo.findById(id).orElseThrow(() -> new NoSuchElementException());
-		Restaurant rest = restaurantRepo.findById(id).get();
-		restaurantRepo.deleteById(id);
-		return rest;
+	public String deleteRestaurant(Long id) {
+		if(id!=null) {
+			restaurantRepo.deleteById(id);
+			return "deleted successfully!";
+		}
+		else {
+			throw new NoSuchElementException();
+		}
 	}
 	
 	public int getTotalRatings(Restaurant restaurant) {
-		return 1;
+		return 10;
 	}
 
 	@Override

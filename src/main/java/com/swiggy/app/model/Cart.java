@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import com.swiggy.app.Audit.Auditable;
@@ -27,6 +28,10 @@ public class Cart extends Auditable<String>{
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="cart_id",referencedColumnName="id")
 	private List<Item> items=new ArrayList<>();
+	
+	@OneToOne
+	@JoinColumn(name="offer_id",referencedColumnName="id")
+	private Offer offer;
 	
 	@Transient
 	private Item item;

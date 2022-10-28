@@ -35,18 +35,26 @@ public class CategoryServiceImpl implements CategoryService{
 	
 	@Override
 	public Category updateCategory(Category category,Long id) {
-		Boolean exists = categoryRepo.existsById(id);
-		if (exists) {
-			return categoryRepo.save(category);
-		} 
-		return null;
+		Category category1  = categoryRepo.findById(id).get();
+		if (category1 != null) {
+			if (category.getName()!= null) {
+				category1.setName(category.getName());
+			}
+			return category1;
+		} else {
+			categoryRepo.save(category);
+			return category;
+		}
 	}
 	
 	@Override
-	public Category deleteCategory(Long id) {
-		categoryRepo.findById(id).orElseThrow(()->new NoSuchElementException());
-		Category rest = categoryRepo.findById(id).get();
-		categoryRepo.deleteById(id);
-		 return rest;
+	public String deleteCategory(Long id) {
+		if(id!=null) {
+			categoryRepo.deleteById(id);
+			return "deleted successfully!";
+		}
+		else {
+			throw new NoSuchElementException();
+		}
 	}
 }

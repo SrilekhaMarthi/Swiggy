@@ -35,18 +35,33 @@ private OfferRepository offerRepo;
 	
 	@Override
 	public Offer updateOffer(Offer offer,Long id) {
-		Boolean exists = offerRepo.existsById(id);
-		if (exists) {
-			return offerRepo.save(offer);
-		} 
-		return null;
+		Offer offer1 = offerRepo.findById(id).get();
+		if (offer1 != null) {
+			if (offer.getCouponCode()!= null) {
+				offer1.setCouponCode(offer.getCouponCode());
+			}
+			return offer1;
+		} else {
+			offerRepo.save(offer);
+			return offer;
+		}
 	}
 	
 	@Override
-	public Offer deleteOffer(Long id) {
-		offerRepo.findById(id).orElseThrow(()->new NoSuchElementException());
-		Offer rest = offerRepo.findById(id).get();
-		offerRepo.deleteById(id);
-		 return rest;
+	public String deleteOffer(Long id) {
+		if(id!=null) {
+			offerRepo.deleteById(id);
+			return "deleted successfully!";
+		}
+		else {
+			throw new NoSuchElementException();
+		}
 	}
+
+	@Override
+	public Offer findOfferByCouponCode(String couponCode) {
+		return offerRepo.findOfferByCouponCode(couponCode);
+	}
+	
+	
 }

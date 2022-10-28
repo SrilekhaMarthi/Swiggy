@@ -14,7 +14,7 @@ public interface CartService {
 
 	Cart updateCart(Cart cart, Long id);
 
-	Cart deleteCart(Long id);
+	String deleteCart(Long id);
 
 	double getSubTotal(Long uid, Long rid);
 }

@@ -14,5 +14,7 @@ public interface OfferService {
 
 	Offer updateOffer(Offer offer, Long id);
 
-	Offer deleteOffer(Long id);
+	String deleteOffer(Long id);
+	
+	Offer findOfferByCouponCode(String couponCode);
 }

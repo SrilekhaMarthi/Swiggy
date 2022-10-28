@@ -35,7 +35,7 @@ public class RestaurantController {
 	@GetMapping("/all")
 	public GResponse getAllRestauranats() {
 		gResponse.setData(restaurantService.getAllRestauranats());
-		gResponse.setStatus(gResponse.getStatus());
+		//gResponse.setStatus(gResponse.getStatus());
 		return gResponse;
 	}
 	
@@ -52,7 +52,7 @@ public class RestaurantController {
 		gResponse.setData(restaurantService.addRestaurant(restaurant));
 		return gResponse;
 	}
-	
+  
 	@PutMapping("/{id}")
 	public GResponse updateRestaurant(@Valid @RequestBody Restaurant restaurant,@PathVariable Long id) {
 		gResponse.setData(restaurantService.updateRestaurant(restaurant, id));
@@ -74,13 +74,13 @@ public class RestaurantController {
 	}
 	
 	@GetMapping("/rating")
-	public GResponse getRestaurantByRating(@RequestParam(name="rating") double avgRating) {
+	public GResponse getRestaurantByRating(@RequestParam("rating") double avgRating) {
 		gResponse.setData(restaurantService.findByRating(avgRating));
 		return gResponse;
 	}
 	
 	@GetMapping("/type")
-	public GResponse getRestaurantByType(@RequestParam(name="type") String type) {
+	public GResponse getRestaurantByType(@RequestParam("type") String type) {
 		gResponse.setData(restaurantService.findByType(type));
 		return gResponse;
 	}

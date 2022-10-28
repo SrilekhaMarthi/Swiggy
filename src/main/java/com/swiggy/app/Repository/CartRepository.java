@@ -9,4 +9,5 @@ import com.swiggy.app.model.Cart;
 public interface CartRepository extends JpaRepository<Cart, Long> {
 
 	Cart findByUserIdAndRestaurantId(Long uid, Long rid);
+	Cart deleteCartById(Long id);
 }

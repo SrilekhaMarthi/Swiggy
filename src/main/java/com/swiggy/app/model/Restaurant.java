@@ -21,7 +21,6 @@ public class Restaurant extends Auditable<String>{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
 	private double avgRating;
 	private int totalRatings;
 	
@@ -58,6 +57,7 @@ public class Restaurant extends Auditable<String>{
 		this.type = type;
 		this.categories = categories;
 		this.offer=offer;
+		
 	}
 
 
@@ -89,7 +89,7 @@ public class Restaurant extends Auditable<String>{
 		return avgRating;
 	}
 
-	public void setRating(double avgRating) {
+	public void setAvgRating(double avgRating) {
 		this.avgRating = avgRating;
 	}
 
@@ -101,13 +101,6 @@ public class Restaurant extends Auditable<String>{
 		this.type = type;
 	}
 	
-	public int gettotalRatings() {
-		return totalRatings;
-	}
-
-	public void settotalRatings(int totalRatings) {
-		this.totalRatings = totalRatings;
-	}
 
 	public List<Category> getCategories() {
 		return categories;
@@ -132,10 +125,7 @@ public class Restaurant extends Auditable<String>{
 	public void setOffer(Offer offer) {
 		this.offer = offer;
 	}
-
-	public void setAvgRating(double avgRating) {
-		this.avgRating = avgRating;
-	}
+	
 
 	@Override
 	public String toString() {

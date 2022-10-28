@@ -14,7 +14,7 @@ public interface RestaurantService {
 	
 	Restaurant updateRestaurant(Restaurant restaurant,Long id);
 	
-	Restaurant deleteRestaurant(Long id);
+	String deleteRestaurant(Long id);
 
 	Long countRestaurants();
 

@@ -14,5 +14,5 @@ public interface ItemService {
 
 	Item updateItem(Item item, Long id);
 
-	Item deleteItem(Long id);
+	String deleteItem(Long id);
 }

@@ -7,5 +7,5 @@ import com.swiggy.app.model.Offer;
 
 @Repository
 public interface OfferRepository extends JpaRepository<Offer,Long>{
-
+	Offer findOfferByCouponCode(String couponCode);
 }
