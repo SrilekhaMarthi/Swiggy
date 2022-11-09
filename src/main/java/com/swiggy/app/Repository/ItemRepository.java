@@ -7,5 +7,10 @@ import com.swiggy.app.model.Item;
 
 @Repository
 public interface ItemRepository extends JpaRepository<Item,Long>{
-
+	
+	String findNameById(Long id);
+	
+	int findQuantityById(Long id);
+	
+	double findPriceById(Long id);
 }

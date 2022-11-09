@@ -81,5 +81,15 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public List<Restaurant> findByType(String type) {
 		return restaurantRepo.findByType(type);
 	}
+
+	@Override
+	public String getRestaurantNameById(Long id) {
+		return restaurantRepo.findNameById(id);
+	}
+
+	@Override
+	public String getRestaurantAddressById(Long id) {
+		return restaurantRepo.findAddressById(id);
+	}
 	
 }

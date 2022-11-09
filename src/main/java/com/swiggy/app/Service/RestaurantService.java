@@ -23,4 +23,10 @@ public interface RestaurantService {
 	List<Restaurant> findByRating(double avgRating);
 	
 	List<Restaurant> findByType(String type);
+	
+	String getRestaurantNameById(Long id);
+	
+	String getRestaurantAddressById(Long id);
+	
+	
 }

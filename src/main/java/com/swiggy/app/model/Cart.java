@@ -16,79 +16,89 @@ import javax.persistence.Transient;
 import com.swiggy.app.Audit.Auditable;
 
 @Entity
-public class Cart extends Auditable<String>{
-	
+public class Cart extends Auditable<String> {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Long userId;
 	private Long restaurantId;
 	private double subTotal;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="cart_id",referencedColumnName="id")
-	private List<Item> items=new ArrayList<>();
-	
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cart_id", referencedColumnName = "id")
+	private List<Item> items = new ArrayList<>();
+
 	@OneToOne
-	@JoinColumn(name="offer_id",referencedColumnName="id")
+	@JoinColumn(name = "offer_id", referencedColumnName = "id")
 	private Offer offer;
-	
+
 	@Transient
 	private Item item;
-	
-	
-	
+
 	public Item getItem() {
 		return item;
 	}
+
 	public void setItem(Item item) {
 		this.item = item;
 	}
+
 	public Cart() {
-		
+
 	}
-	public Cart(Long id,Long userId,double subTotal) {
+
+	public Cart(Long id, Long userId, double subTotal) {
 		super();
 		this.id = id;
-		this.userId=userId;
-		this.subTotal=subTotal;
-		
+		this.userId = userId;
+		this.subTotal = subTotal;
+
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public Long getUserId() {
 		return userId;
 	}
+
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
+
 	public double getSubTotal() {
 		return subTotal;
 	}
+
 	public void setSubTotal(double subTotal) {
 		this.subTotal = subTotal;
 	}
+
 	public List<Item> getItems() {
 		return items;
 	}
+
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
-	
+
 	public Long getRestaurantId() {
 		return restaurantId;
 	}
+
 	public void setRestaurantId(Long restaurantId) {
 		this.restaurantId = restaurantId;
 	}
+
 	@Override
 	public String toString() {
-		return "id=" + id + ", userId=" + userId + ", subTotal=" + subTotal + "";
+		return "id=" + id + ", userId=" + userId + ", restaurantId=" + restaurantId +" subTotal=" + subTotal + "";
 	}
-	
+
 }

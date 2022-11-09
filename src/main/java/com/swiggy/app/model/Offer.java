@@ -8,45 +8,18 @@ import javax.persistence.Id;
 import com.swiggy.app.Audit.Auditable;
 
 @Entity
-public class Offer extends Auditable<String>{
+public class Offer extends Auditable<String> {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String couponCode;//trynew
-//	private double maxDiscount; //120
-	private double minItemTotal; //149
-	private double percentage; //60%=>60/100=>0.6
-	// 1. 60 percent off on the purchases above 149.
-	// 3. if 60% of total cart amount > 120,then only 120 rupees will be deducted.
-	// 
-	// 4. 60% of total cart amount => sum of 60% of each item for each quantity.
-	
-	//  offer.getpercentage => 
-	//         nsum=0;
-	//         nsum += (percentage*item.getPrice())*item.getquantity
-	//  if (offer.getpercentage > 0.8*minItemTotal){
-	//         nsum = (item.getPrice()*item.getquantity)-0.8*minItemTotal 
-	// 5. maxDiscount => 80 percent of minItemTotal(120)
-    /*
-     * couponcode = trynew
-     * minItemTotal = 149
-     * percentage = 0.6
-     * 
-     * getSubTotal => sum(210);
-     *  if (sum > minItemTotal){
-     *       offerEnabled= true;
-     *       if (offerEnabled){
-     *         getSubTotal = getSubTotal - 
-     * 
-     * 
-     * 
-     * 
-     */
-	
+	private String couponCode;
+	private double minItemTotal;
+	private double percentage;
+
 	public Offer() {
-		
+
 	}
-	
+
 	public Offer(Long id, String couponCode, double minItemTotal, double percentage) {
 		super();
 		this.id = id;
@@ -86,11 +59,11 @@ public class Offer extends Auditable<String>{
 	public void setPercentage(double percentage) {
 		this.percentage = percentage;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Offer [id=" + id + ", couponCode=" + couponCode + ", minItemTotal=" + minItemTotal + ", percentage="
-				+ percentage +  "]";
+				+ percentage + "]";
 	}
-	
+
 }

@@ -23,10 +23,8 @@ public class Restaurant extends Auditable<String>{
 	private Long id;
 	private double avgRating;
 	private int totalRatings;
-	
-	@NotNull
+		
 	private String name;
-	@NotNull
 	private String address;
 	
 	@NotBlank(message="Type of restaurant shouldn't be blank")

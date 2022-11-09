@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.swiggy.app.GResponse.GResponse;
@@ -54,18 +55,21 @@ public class CartController {
 		return gResponse;
 	}
 	
+	
+	
 	@DeleteMapping("/{id}")
 	public GResponse deleteCart(@PathVariable Long id) {
 		gResponse.setData(cartService.deleteCart(id));
 		return gResponse;
 	}
 	
-//	@GetMapping("/subTotal")
-//	public GResponse getSubTotal(@RequestParam("userId") Long uid,@RequestParam("restaurantId") Long rid) {
-//		//gResponse.setData(CartService.getSubTotal(uid,rid));
-//	    //System.out.println("Total:"+gResponse);
-//		return gResponse;
-//	}
+	@GetMapping("/subTotal")
+	public GResponse getSubTotal(@RequestParam("userId") Long uid,@RequestParam("restaurantId") Long rid) {
+		gResponse.setData(cartService.getSubTotal(uid,rid));
+		
+	    System.out.println("Total:"+gResponse);
+		return gResponse;
+	}
 	
 	
 	

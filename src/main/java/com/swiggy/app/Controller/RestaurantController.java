@@ -84,5 +84,17 @@ public class RestaurantController {
 		gResponse.setData(restaurantService.findByType(type));
 		return gResponse;
 	}
+	
+	@GetMapping("/name/{id}")
+	public GResponse getRestaurantName(@PathVariable Long id) {
+		gResponse.setData(restaurantService.getRestaurantNameById(id));
+		return gResponse;
+	}
+	
+	@GetMapping("/address/{id}")
+	public GResponse getRestaurantAddress(@PathVariable Long id) {
+		gResponse.setData(restaurantService.getRestaurantAddressById(id));
+		return gResponse;
+	}
 		
 }

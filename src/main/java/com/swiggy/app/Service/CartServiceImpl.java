@@ -83,6 +83,7 @@ public class CartServiceImpl implements CartService {
 			System.out.println("jumbo");
 			calculateDiscount("JUMBO");
 		}
+		cart.setSubTotal(sum);
 		return sum;
 	}
 
