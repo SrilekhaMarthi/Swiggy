@@ -8,23 +8,25 @@ import javax.persistence.Id;
 @Entity
 public class Invoice {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private double cartSubTotal;
 	private double gst;
 	private double deliveryCharges;
+	private double total;
 	private String link;
-	
+
 	public Invoice() {
 		super();
 	}
 
-	public Invoice(Long id, double cartSubTotal, double gst, double deliveryCharges, String link) {
+	public Invoice(Long id, double cartSubTotal, double gst, double deliveryCharges, double total, String link) {
 		super();
 		this.id = id;
 		this.cartSubTotal = cartSubTotal;
 		this.gst = gst;
 		this.deliveryCharges = deliveryCharges;
+		this.total = total;
 		this.link = link;
 	}
 
@@ -60,6 +62,14 @@ public class Invoice {
 		this.deliveryCharges = deliveryCharges;
 	}
 
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
 	public String getLink() {
 		return link;
 	}
@@ -67,5 +77,5 @@ public class Invoice {
 	public void setLink(String link) {
 		this.link = link;
 	}
-	
+
 }

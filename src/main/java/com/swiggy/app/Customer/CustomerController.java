@@ -1,4 +1,4 @@
-package com.swiggy.app.Controller;
+package com.swiggy.app.Customer;
 
 import java.util.List;
 
@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.swiggy.app.GResponse.GResponse;
-import com.swiggy.app.Service.CustomerService;
-import com.swiggy.app.model.Customer;
 
 @RestController
 @RequestMapping("/api/user")

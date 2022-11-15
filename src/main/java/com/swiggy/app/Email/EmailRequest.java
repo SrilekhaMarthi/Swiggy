@@ -4,11 +4,19 @@ public class EmailRequest {
 	String to;
 	String body;
 	String sub;
+	String attachment;
 
 	public EmailRequest(String to, String body, String sub) {
 		this.to = to;
 		this.body = body;
 		this.sub = sub;
+	}
+	
+	public EmailRequest(String to, String body, String sub,String attachment) {
+		this.to = to;
+		this.body = body;
+		this.sub = sub;
+		this.attachment=attachment;
 	}
 
 	public String getTo() {
@@ -34,4 +42,14 @@ public class EmailRequest {
 	public void setSub(String sub) {
 		this.sub = sub;
 	}
+
+	public String getAttachment() {
+		return attachment;
+	}
+
+	public void setAttachment(String attachment) {
+		this.attachment = attachment;
+	}
+	
+	
 }

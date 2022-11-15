@@ -45,8 +45,11 @@ public class CartServiceImpl implements CartService {
 	public Cart updateCart(Cart cart, Long id) {
 		Cart cart1 = cartRepo.findById(id).get();
 		if (cart1 != null) {
-			if (cart.getItem() != null) {
-				cart1.setItem(cart.getItem());
+			if (cart.getUserId()!=null) {
+				cart1.setUserId(cart.getUserId());
+			}
+			if (cart.getRestaurantId()!=null) {
+				cart1.setRestaurantId(cart.getRestaurantId());
 			}
 			return cart1;
 		} else {

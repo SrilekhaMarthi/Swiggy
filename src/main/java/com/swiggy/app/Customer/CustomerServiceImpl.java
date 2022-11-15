@@ -1,4 +1,4 @@
-package com.swiggy.app.Service;
+package com.swiggy.app.Customer;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -6,9 +6,6 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.swiggy.app.Repository.CustomerRepository;
-import com.swiggy.app.model.Customer;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{

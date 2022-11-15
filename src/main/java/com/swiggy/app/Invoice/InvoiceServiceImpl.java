@@ -29,6 +29,12 @@ public class InvoiceServiceImpl implements InvoiceService{
 
 	@Override
 	public Invoice addInvoice(Invoice invoice) {
+		double total = 0;
+		double cartSubTotal = invoice.getCartSubTotal();
+		double gst = invoice.getGst();
+		double dCharges = invoice.getDeliveryCharges();
+		total = cartSubTotal+gst+dCharges;
+		invoice.setTotal(total);
 		return invoiceRepo.save(invoice);
 	}
 

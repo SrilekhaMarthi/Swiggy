@@ -1,4 +1,4 @@
-package com.swiggy.app.model;
+package com.swiggy.app.Customer;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

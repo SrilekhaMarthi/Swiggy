@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 
 import com.swiggy.app.Audit.Auditable;
 
@@ -32,17 +31,6 @@ public class Cart extends Auditable<String> {
 	@OneToOne
 	@JoinColumn(name = "offer_id", referencedColumnName = "id")
 	private Offer offer;
-
-	@Transient
-	private Item item;
-
-	public Item getItem() {
-		return item;
-	}
-
-	public void setItem(Item item) {
-		this.item = item;
-	}
 
 	public Cart() {
 

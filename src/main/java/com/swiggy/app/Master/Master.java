@@ -1,7 +1,5 @@
 package com.swiggy.app.Master;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,56 +10,56 @@ import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-
 @Entity
-public class Master implements Serializable{
-	private static final long serialVersionUID = 1L;
+public class Master {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private Long restuarantId;
 	private String restuarantName;
 	private String restuarantLocation;
-	
+
 	private Long userId;
 	private String userName;
 	private String userAddress;
 	private String userMail;
 	private String userPhone;
-	
-	@Column(length=500)
-	@Type(type="com.vladmihalcea.hibernate.type.json.JsonBinaryType")
+
+	@Column(length = 500)
+	@Type(type = "com.vladmihalcea.hibernate.type.json.JsonBinaryType")
 	private JsonNode items;
-	
+
+	private String itemNames;
+
 	private Long cartId;
-	private double cartSubTotal;
-	private double gst;
-	private double deliveryCharges;
-	
+//	private double cartSubTotal;
+//	private double gst;
+//	private double deliveryCharges;
+	private double total;
 	private String estDelTime;
-	
+
 	private Long personId;
 	private String personName;
 	private String personPhone;
-	
+
 	private Long paymentId;
 	private String paymentMode;
 	private String paymentStatus;
 	private String transactionId;
 	private String invoiceLink;
-	
+
 	private String orderStatus;
 
 	public Master() {
 		super();
 	}
 
-	public Master( Long restuarantId, String restuarantName, String restuarantLocation, Long userId,
-			String userName, String userAddress, String userMail, String userPhone, JsonNode items, Long cartId, double cartSubTotal, double gst, double deliveryCharges, String estDelTime,
-			Long personId, String personName, String personPhone, Long paymentId,String paymentMode, String paymentStatus,
-			String transactionId, String invoiceLink, String orderStatus) {
+	public Master(Long restuarantId, String restuarantName, String restuarantLocation, Long userId, String userName,
+			String userAddress, String userMail, String userPhone, JsonNode items, String itemNames, Long cartId,
+			double total, String estDelTime, Long personId, String personName, String personPhone, Long paymentId,
+			String paymentMode, String paymentStatus, String transactionId, String invoiceLink, String orderStatus) {
 		super();
 		this.restuarantId = restuarantId;
 		this.restuarantName = restuarantName;
@@ -72,22 +70,23 @@ public class Master implements Serializable{
 		this.userMail = userMail;
 		this.userPhone = userPhone;
 		this.items = items;
+		this.itemNames = itemNames;
 		this.cartId = cartId;
-		this.cartSubTotal = cartSubTotal;
-		this.gst = gst;
-		this.deliveryCharges = deliveryCharges;
+//		this.cartSubTotal = cartSubTotal;
+//		this.gst = gst;
+//		this.deliveryCharges = deliveryCharges;
+		this.total = total;
 		this.estDelTime = estDelTime;
 		this.personId = personId;
 		this.personName = personName;
 		this.personPhone = personPhone;
-		this.paymentId=paymentId;
+		this.paymentId = paymentId;
 		this.paymentMode = paymentMode;
 		this.paymentStatus = paymentStatus;
 		this.transactionId = transactionId;
 		this.invoiceLink = invoiceLink;
 		this.orderStatus = orderStatus;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -160,7 +159,7 @@ public class Master implements Serializable{
 	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;
 	}
-	
+
 	public JsonNode getItems() {
 		return items;
 	}
@@ -177,28 +176,36 @@ public class Master implements Serializable{
 		this.cartId = cartId;
 	}
 
-	public double getCartSubTotal() {
-		return cartSubTotal;
+//	public double getCartSubTotal() {
+//		return cartSubTotal;
+//	}
+//
+//	public void setCartSubTotal(double cartSubTotal) {
+//		this.cartSubTotal = cartSubTotal;
+//	}
+//
+//	public double getGst() {
+//		return gst;
+//	}
+//
+//	public void setGst(double gst) {
+//		this.gst = gst;
+//	}
+//
+//	public double getDeliveryCharges() {
+//		return deliveryCharges;
+//	}
+//
+//	public void setDeliveryCharges(double deliveryCharges) {
+//		this.deliveryCharges = deliveryCharges;
+//	}
+
+	public double getTotal() {
+		return total;
 	}
 
-	public void setCartSubTotal(double cartSubTotal) {
-		this.cartSubTotal = cartSubTotal;
-	}
-
-	public double getGst() {
-		return gst;
-	}
-
-	public void setGst(double gst) {
-		this.gst = gst;
-	}
-
-	public double getDeliveryCharges() {
-		return deliveryCharges;
-	}
-
-	public void setDeliveryCharges(double deliveryCharges) {
-		this.deliveryCharges = deliveryCharges;
+	public void setTotal(double total) {
+		this.total = total;
 	}
 
 	public String getEstDelTime() {
@@ -233,7 +240,6 @@ public class Master implements Serializable{
 		this.personPhone = personPhone;
 	}
 
-	
 	public Long getPaymentId() {
 		return paymentId;
 	}
@@ -282,17 +288,22 @@ public class Master implements Serializable{
 		this.orderStatus = orderStatus;
 	}
 
+	public String getItemNames() {
+		return itemNames;
+	}
+
+	public void setItemNames(String itemNames) {
+		this.itemNames = itemNames;
+	}
+
 	@Override
 	public String toString() {
 		return "{id=" + id + ", restuarantName=" + restuarantName + ", restuarantLocation=" + restuarantLocation
 				+ ", userName=" + userName + ", userAddress=" + userAddress + ", userMail=" + userMail + ", userPhone="
-				+ userPhone + ", items=" + items + ", cartId=" + cartId + ", cartSubTotal=" + cartSubTotal + ", gst="
-				+ gst + ", deliveryCharges=" + deliveryCharges + ", estDelTime=" + estDelTime + ", personName="
+				+ userPhone + ", items=" + items + ", cartId=" + cartId + ", total=" + total + ", estDelTime=" + estDelTime + ", personName="
 				+ personName + ", personPhone=" + personPhone + ", paymentMode=" + paymentMode + ", paymentStatus="
 				+ paymentStatus + ", transactionId=" + transactionId + ", invoiceLink=" + invoiceLink + ", orderStatus="
 				+ orderStatus + "}";
 	}
-	
-	
-	
+
 }

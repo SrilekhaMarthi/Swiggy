@@ -1,8 +1,6 @@
-package com.swiggy.app.Service;
+package com.swiggy.app.Customer;
 
 import java.util.List;
-
-import com.swiggy.app.model.Customer;
 
 public interface CustomerService {
 	List<Customer> getUsers();
@@ -14,4 +12,3 @@ public interface CustomerService {
 	String deleteUserById(Long id);
 	
 }
-
